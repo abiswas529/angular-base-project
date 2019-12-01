@@ -66,6 +66,7 @@ export class EmptyDemoComponent implements OnInit {
         let getotpObj = this.currentEmployeeObj;
         let creatOtpObj = {
             empId: getotpObj.empID,
+            //phoneNo: getotpObj.phone,
             phoneNo: getotpObj.phone,
             name: getotpObj.name
         }
@@ -81,7 +82,7 @@ export class EmptyDemoComponent implements OnInit {
             otpnum: validatedOtp
         }
         this.assignService.validOtp(validateOtpObj).then(res => {
-            if (res !== null) {
+            if (res.status == 200) {
                 this.display = false;
                 this.isValidOtp = true;
             }
@@ -94,6 +95,13 @@ export class EmptyDemoComponent implements OnInit {
     }
     deleteSellingPoint(index) {
         this.sellingPoints.removeAt(index);
+    }
+    clearFormArray() {
+        this.sellingPoints.reset();
+        while (this.sellingPoints.length !== 0) {
+            this.sellingPoints.removeAt(0)
+        }
+        this.isValidOtp = false;
     }
     searchEmployee() {
         this.assignService.getEmployeeData(this.enteredId).then(res => {
