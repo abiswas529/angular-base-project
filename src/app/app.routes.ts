@@ -10,6 +10,7 @@ import {MenusDemoComponent} from './demo/view/menusdemo.component';
 import {MessagesDemoComponent} from './demo/view/messagesdemo.component';
 import {MiscDemoComponent} from './demo/view/miscdemo.component';
 import {EmptyDemoComponent} from './demo/view/emptydemo.component';
+import {GlDashboardComponent} from './demo/view/glDashboard.component';
 import {ChartsDemoComponent} from './demo/view/chartsdemo.component';
 import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
@@ -28,6 +29,7 @@ export const routes: Routes = [
     {path: 'messages', component: MessagesDemoComponent},
     {path: 'misc', component: MiscDemoComponent},
     {path: 'empty', component: EmptyDemoComponent},
+    {path: 'glDash', component: GlDashboardComponent},
     {path: 'charts', component: ChartsDemoComponent},
     {path: 'file', component: FileDemoComponent},
     {path: 'utils', component: UtilsDemoComponent},

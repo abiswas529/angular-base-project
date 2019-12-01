@@ -1,0 +1,19 @@
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-lg-12">
+            <div class="card" *ngIf="pieData">
+                    <h1 class="centerText">Stationary Stats</h1>
+                    <p-chart type="pie" (onDataSelect)="selectData($event)" [data]="pieData"></p-chart>
+                </div>
+
+                <div class="ui-g-12 ui-lg-12" *ngIf="nestedPieChart">
+                        <div class="card">
+                                <h1 class="centerText">Stationary Stats2</h1>
+                                <p-chart type="pie" (onDataSelect)="selectData($event)" [data]="nestedPieChart"></p-chart>
+                </div>
+                
+        <div class="card">
+            <h1 class="centerText">Linear Chart</h1>
+            <p-chart type="line" [data]="lineData"></p-chart>
+        </div>
+    </div>
+</div>

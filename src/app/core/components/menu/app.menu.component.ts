@@ -72,6 +72,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Template Pages', icon: 'get_app',
                 items: [
                     {label: 'Empty Page', icon: 'hourglass_empty', routerLink: ['/empty']},
+                    {label: 'dashbaord Page', icon: 'hourglass_empty', routerLink: ['/glDash']},
                     {label: 'Landing Page', icon: 'flight_land', url: 'assets/pages/landing.html', target: '_blank'},
                     {label: 'Login Page', icon: 'verified_user', url: 'assets/pages/login.html', target: '_blank'},
                     {label: 'Error Page', icon: 'error', url: 'assets/pages/error.html', target: '_blank'},
