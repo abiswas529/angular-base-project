@@ -1,60 +1,101 @@
 <div class="ui-fluid">
     <div class="ui-g">
-        <div class="ui-g-12">
-            <div class="card card-w-title">
-                <h1>Asssign Stationary</h1>
-                <button type="button" icon="ui-icon-add" pButton (click)="addSellingPoint()"></button>
-                <form [formGroup]="productForm">
-                    <div formArrayName="selling_points" class="ui-g form-group">
-                        <div *ngFor="let item of sellingPoints.controls; let pointIndex=index"
-                            [formGroupName]="pointIndex">
-                            <div class="ui-g-12 ui-md-2">
-                                <label for="dropdown">Item Category</label>
-                            </div>
-                            <div class="ui-g-12 ui-md-2">
-                                <span class="md-inputfield">
-                                    <p-dropdown [options]="itemCategory" formControlName="category" [autoWidth]="true">
-                                    </p-dropdown>
-
-                                </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-2">
-                                <label for="dropdown">Item Sub Category</label>
-                            </div>
-                            <div class="ui-g-12 ui-md-2">
-                                <span class="md-inputfield">
-                                    <p-dropdown [options]="itemSubCategory" formControlName="itemCode"
-                                        [autoWidth]="true">
-                                    </p-dropdown>
-
-                                </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-1">
-                                <label for="sppiner">Quantity</label>
-                            </div>
-                            <div class="ui-g-12 ui-md-1">
-                                <span class="md-inputfield">
-                                    <p-spinner formControlName="quantity"></p-spinner>
-                                </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-1">
-                                <label for="textarea">Note</label>
-                            </div>
-                            <div class="ui-g-12 ui-md-1">
-                                <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="note"
-                                    autoResize="autoResize"></textarea>
-                            </div>
-                            <button type="button" icon="ui-icon-delete" pButton
-                                (click)="deleteSellingPoint(pointIndex)"></button>
-                        </div>
-
-                    </div>
-                </form>
-                <button class="Submit" type="button" label="Submit" pButton (click)="saveAssignListDetails()"></button>
+        <div class="form-group">
+            <div class="ui-g-12 ui-md-12">
+                <div class="ui-inputgroup">
+                    <span class="md-inputfield">
+                        <input type="text" pInputText [(ngModel)]="enteredId">
+                        <label>Enter Employee ID</label>
+                    </span>
+                    <button pButton type="button" icon="ui-icon-search" (click)="searchEmployee()"></button>
+                </div>
             </div>
-            <!-- {{
-                this.productForm.value | json
-            }} -->
         </div>
+        <div *ngIf="showEmployeeDetails">
+            <div class="ui-g-12">
+                <div class="card card-w-title">
+                    <h1>Asssign Stationary</h1>
+                    <button type="button" icon="ui-icon-add" pButton (click)="addSellingPoint()"></button>
+                    <form [formGroup]="productForm">
+                        <div formArrayName="selling_points" class="ui-g form-group">
+                            <div *ngFor="let item of sellingPoints.controls; let pointIndex=index"
+                                [formGroupName]="pointIndex">
+                                <div class="ui-g-12 ui-md-2">
+                                    <label for="dropdown">Item Category</label>
+                                </div>
+                                <div class="ui-g-12 ui-md-2">
+                                    <span class="md-inputfield">
+                                        <p-dropdown disabled [options]="itemCategory" formControlName="category"
+                                            [autoWidth]="true">
+                                        </p-dropdown>
+                                    </span>
+                                </div>
+                                <div class="ui-g-12 ui-md-2">
+                                    <label for="dropdown">Item Sub Category</label>
+                                </div>
+                                <div class="ui-g-12 ui-md-2">
+                                    <span class="md-inputfield">
+                                        <p-dropdown [options]="itemSubCategory" formControlName="itemCode"
+                                            [autoWidth]="true">
+                                        </p-dropdown>
+                                    </span>
+                                </div>
+                                <div class="ui-g-12 ui-md-1">
+                                    <label for="sppiner">Quantity</label>
+                                </div>
+                                <div class="ui-g-12 ui-md-1">
+                                    <span class="md-inputfield">
+                                        <p-spinner formControlName="quantity"></p-spinner>
+                                    </span>
+                                </div>
+                                <div class="ui-g-12 ui-md-1">
+                                    <label for="textarea">Note</label>
+                                </div>
+                                <div class="ui-g-12 ui-md-1">
+                                    <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="note"
+                                        autoResize="autoResize"></textarea>
+                                </div>
+                                <button type="button" icon="ui-icon-delete" pButton
+                                    (click)="deleteSellingPoint(pointIndex)"></button>
+                            </div>
+                        </div>
+                    </form>
+                    <p-dialog header="Validate OTP" [(visible)]="display" modal="modal" showEffect="fade" width="400">
+                        <div class="ui-g-12 ui-md-12">
+                            <span class="md-inputfield">
+                                <input type="text" [(ngModel)]="toValidOtp" pInputText>
+                                <label>Enter OTP</label>
+                            </span>
+                        </div>
+                        <p-footer>
+                            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                <button type="button" pButton icon="fa-check" (click)="validateOtp()"
+                                    label="Validate"></button>
+                            </div>
+                        </p-footer>
+                    </p-dialog>
+                    <button type="text" (click)="sendOtp()" pButton icon="fa-external-link-square"
+                        label="GET OTP"></button>
+                    <button class="Submit" type="button" label="Submit" [(disabled)]="!isValidOtp" pButton
+                        (click)="saveAssignListDetails()"></button>
+                </div>
+                <!-- {{
+                          this.productForm.value | json 
+                          }} -->
+            </div>
+            <div class="ui-g-12">
+                <div class=" card card-w-title">
+                    <p-dataTable [value]="itemList" selectionMode="single" [paginator]="true" [rows]="10"
+                        [responsive]="true">
+                        <p-header>Issuance History</p-header>
+                        <p-column field="seqNo" header="Sq No" [sortable]="true"></p-column>
+                        <p-column field="itemCode" header="Item Name" [sortable]="true"></p-column>
+                        <p-column field="quantity" header="Quantity" [sortable]="true"></p-column>
+                        <p-column field="note" header="Note" [sortable]="true"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
