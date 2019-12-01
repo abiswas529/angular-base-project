@@ -95,7 +95,8 @@ import { UtilsDemoComponent } from './demo/view/utilsdemo.component';
 import { DocumentationComponent } from './demo/view/documentation.component';
 
 import { CarService } from './demo/service/carservice';
-import { GlService} from './demo/service/glService'
+import { GlService } from './demo/service/glService'
+import { AssignService } from './demo/service/assignService';
 import { CountryService } from './demo/service/countryservice';
 import { EventService } from './demo/service/eventservice';
 import { NodeService } from './demo/service/nodeservice';
@@ -106,7 +107,7 @@ import { AuthGuardService } from './core/services/auth/AuthGuard.service';
 import { LoginComponent } from './core/components/login/login.component';
 import { AppointmentService } from './core/services/appointment/Appointment.service';
 import { HttpClientModule } from '@angular/common/http';
-import {GlDashboardComponent} from './demo/view/glDashboard.component';
+import { GlDashboardComponent } from './demo/view/glDashboard.component';
 
 @NgModule({
     imports: [
@@ -209,7 +210,7 @@ import {GlDashboardComponent} from './demo/view/glDashboard.component';
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        CarService,GlService, CountryService, EventService, NodeService,
+        CarService, GlService, CountryService, EventService, NodeService, AssignService,
         { provide: BASE_URL, useValue: environment.baseUrl },
         AuthService,
         AuthGuardService,

@@ -23,7 +23,7 @@
                             </div>
                             <div class="ui-g-12 ui-md-2">
                                 <span class="md-inputfield">
-                                    <p-dropdown [options]="itemSubCategory" formControlName="subcategory"
+                                    <p-dropdown [options]="itemSubCategory" formControlName="itemCode"
                                         [autoWidth]="true">
                                     </p-dropdown>
 
@@ -41,7 +41,7 @@
                                 <label for="textarea">Note</label>
                             </div>
                             <div class="ui-g-12 ui-md-1">
-                                <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="expln"
+                                <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="note"
                                     autoResize="autoResize"></textarea>
                             </div>
                             <button type="button" icon="ui-icon-delete" pButton
@@ -50,11 +50,11 @@
 
                     </div>
                 </form>
-
+                <button class="Submit" type="button" label="Submit" pButton (click)="saveAssignListDetails()"></button>
             </div>
-            {{
+            <!-- {{
                 this.productForm.value | json
-            }}
+            }} -->
         </div>
     </div>
 </div>
