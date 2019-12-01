@@ -11,4 +11,9 @@ export class GlService {
                     .toPromise()
                     .then(res => <any> res.json().result_set)
     }
+    getStatInfo() {
+        return this.http.get(`${this.Url}employees/history/all`)
+        .toPromise()
+        .then(res => <any> res.json().result_set) 
+    }
 }

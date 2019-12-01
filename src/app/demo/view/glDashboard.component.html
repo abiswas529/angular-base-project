@@ -5,8 +5,8 @@
                     <p-chart type="pie" (onDataSelect)="selectData($event)" [data]="pieData"></p-chart>
                 </div>
 
-                <div class="ui-g-12 ui-lg-12" *ngIf="nestedPieChart">
-                        <div class="card">
+                <div class="ui-g-12 ui-lg-12" >
+                        <div class="card" *ngIf="nestedPieChart">
                                 <h1 class="centerText">Stationary Stats2</h1>
                                 <p-chart type="pie" (onDataSelect)="selectData($event)" [data]="nestedPieChart"></p-chart>
                 </div>
