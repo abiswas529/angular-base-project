@@ -101,6 +101,7 @@ export class EmptyDemoComponent implements OnInit {
         while (this.sellingPoints.length !== 0) {
             this.sellingPoints.removeAt(0)
         }
+        this.sellingPoints.push(this.fb.group({ category: '', itemCode: '', quantity: '', note: '' }));
         this.isValidOtp = false;
     }
     searchEmployee() {
