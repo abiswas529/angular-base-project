@@ -1,8 +1,60 @@
-<div class="ui-g">
-    <div class="ui-g-12">
-        <div class="card">
-            <h1>Empty Page</h1>
-            <p>Use this page to start from scratch and place your custom content.</p>
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="card card-w-title">
+                <h1>Asssign Stationary</h1>
+                <button type="button" icon="ui-icon-add" pButton (click)="addSellingPoint()"></button>
+                <form [formGroup]="productForm">
+                    <div formArrayName="selling_points" class="ui-g form-group">
+                        <div *ngFor="let item of sellingPoints.controls; let pointIndex=index"
+                            [formGroupName]="pointIndex">
+                            <div class="ui-g-12 ui-md-2">
+                                <label for="dropdown">Item Category</label>
+                            </div>
+                            <div class="ui-g-12 ui-md-2">
+                                <span class="md-inputfield">
+                                    <p-dropdown [options]="itemCategory" formControlName="category" [autoWidth]="true">
+                                    </p-dropdown>
+
+                                </span>
+                            </div>
+                            <div class="ui-g-12 ui-md-2">
+                                <label for="dropdown">Item Sub Category</label>
+                            </div>
+                            <div class="ui-g-12 ui-md-2">
+                                <span class="md-inputfield">
+                                    <p-dropdown [options]="itemSubCategory" formControlName="subcategory"
+                                        [autoWidth]="true">
+                                    </p-dropdown>
+
+                                </span>
+                            </div>
+                            <div class="ui-g-12 ui-md-1">
+                                <label for="sppiner">Quantity</label>
+                            </div>
+                            <div class="ui-g-12 ui-md-1">
+                                <span class="md-inputfield">
+                                    <p-spinner formControlName="quantity"></p-spinner>
+                                </span>
+                            </div>
+                            <div class="ui-g-12 ui-md-1">
+                                <label for="textarea">Note</label>
+                            </div>
+                            <div class="ui-g-12 ui-md-1">
+                                <textarea [rows]="3" [cols]="30" pInputTextarea formControlName="expln"
+                                    autoResize="autoResize"></textarea>
+                            </div>
+                            <button type="button" icon="ui-icon-delete" pButton
+                                (click)="deleteSellingPoint(pointIndex)"></button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+            {{
+                this.productForm.value | json
+            }}
         </div>
     </div>
 </div>
