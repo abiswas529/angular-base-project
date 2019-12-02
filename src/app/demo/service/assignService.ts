@@ -4,7 +4,7 @@ import { AssignSucces } from '../domain/assignSuccess';
 
 @Injectable()
 export class AssignService {
-    Url = 'http://18.219.190.56:9000/';
+    Url = 'https://18.219.190.56:9000/';
     constructor(private http: Http) { }
     saveAssignDetails(param) {
         return this.http.post(`${this.Url}employees/history`, param)
